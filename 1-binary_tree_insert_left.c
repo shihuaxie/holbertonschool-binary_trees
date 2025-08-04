@@ -25,17 +25,15 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 	new_node->left = NULL;
 	new_node->right = NULL;
 
-	/* if parent->left == NULL, insert new_node directly*/
-
 	/* if parent->left != NULL, the new_node has priority */
 	/* the previous left child node becomes to the left child of new_node*/
 	if (parent->left != NULL)
 	{
-		new_node->left = parent->left;
-		parent->left->parent = new_node;
+		new_node->left = parent->left;/* the previous left-child of parent  was assigned as the left of new_node*/
+		parent->left->parent = new_node;/* update the previous left-child's father == new_node*/
 	}
 
-	parent->left = new_node; /* insert new_node to the left of parent*/
+	parent->left = new_node; /* if parent->left == NULL, insert new_node directly*/
 
 	return (new_node);
 }
